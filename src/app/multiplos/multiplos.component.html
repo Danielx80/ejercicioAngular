@@ -1,0 +1,42 @@
+<main>
+  <div class="container">
+    <img
+      src="https://lh4.googleusercontent.com/53CV5AEjb5kQoYrSjyybn8b07nA--ayTKdM-wUgagapPadrKZ3GbOen61qHxOxzzFRxItotfqshN6k8hsiUya15Xn37rRldEflZTTKLw-VAi14gt8NoBl-m_q3WlaTxBF6YbLU1lQmE4zFidzA"
+      alt="imagen de Angular"
+    />
+
+    <h3>Ejercicio con base de datos firebase y hosting</h3>
+    <p>Múltiplos del 3 en <strong class="color-green">VERDE</strong></p>
+    <p>Múltiplos del 5 en <strong class="color-red">ROJO</strong></p>
+    <p>Múltiplos del 7 en <strong class="color-blue">AZUL</strong></p>
+    
+    <div class="col-sm-6">
+      <label class="h5 mb-2" for="numberInput">Ingresa un número:</label>
+      <!-- Agrega un numero y al darle el boton muestra los multiplos -->
+      <input class="form-control mb-4" type="number" id="numberInput" [(ngModel)]="number" />
+      <button class="btn btn-primary" (click)="calculateMultiples()">Calcular</button>
+      <ul>
+        <!-- itera todos los numeros generados -->
+        <li *ngFor="let number of numbers" [ngClass]="getColor(number)">
+          {{ number }}
+          <!-- Si existe un multiplo, lo muestra -->
+          <span *ngIf="onMultiples(number)">[{{ getMultiples(number).join(" y ") }}]</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<style>
+  .verde {
+    color: green;
+  }
+
+  .rojo {
+    color: red;
+  }
+
+  .azul {
+    color: blue;
+  }
+</style>
